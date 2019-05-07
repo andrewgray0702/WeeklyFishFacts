@@ -1,0 +1,31 @@
+.bg {
+    background-image: url('../../../assets/water2.jpg');
+    height: 800px;
+    width: 100%;
+    z-index: -2;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+}
+
+.headline{
+    text-align: center;
+    padding-top: 5%;
+}
+
+.btnContainer{
+    text-align:  center;
+}
+.nav-item{
+    color: white !important;
+}
+.background1{
+    background: rgb(18,33,75);
+    background: linear-gradient(0deg, rgba(18,33,75,1) 0%, rgba(44,9,226,1) 100%);
+}
