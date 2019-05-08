@@ -4,11 +4,11 @@
         <div class="row">
             <div class="form-group col">
                 <label for="Textarea1"><h2>Suggest a fish fact! (300 char max)</h2></label>
-                <textarea class="form-control" id="Textarea1" rows="3"></textarea>
+                <textarea class="form-control" id="Textarea1" rows="3" name="suggestionArea" [(ngModel)]="suggestion"></textarea>
             </div>
         </div>
         <div class="textAlignCenter">
-            <button type="submit" class="btn btn-primary">Log-In</button>
+            <button type="submit" class="btn btn-primary" (click)="suggest()">Suggest</button>
           </div>
       </form>
     </div>

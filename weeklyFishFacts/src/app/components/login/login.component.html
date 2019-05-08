@@ -4,13 +4,13 @@
       <div class="row">
         <div class="form-group col">
           <label for="inputEmail1">Email address</label>
-          <input type="email" [(ngModel)]="username" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <input type="email" autocomplete="email username" [(ngModel)]="username" name='emailForm' class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
       </div>
       <div class="row">
         <div class="form-group col">
           <label for="inputPassword1">Password</label>
-          <input type="password" [(ngModel)]="password" class="form-control" id="inputPassword1" placeholder="Password">
+          <input type="password" autocomplete='current-password' [(ngModel)]="password" name='passwordForm' class="form-control" id="inputPassword1" placeholder="Password">
         </div>
       </div>
       <div class="row">
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="textAlignCenter">
-        <button type="submit" class="btn btn-primary">Log-In</button>
+        <button type="submit" class="btn btn-primary" (click)="login()">Log-In</button>
       </div>
     </form>
   </div>

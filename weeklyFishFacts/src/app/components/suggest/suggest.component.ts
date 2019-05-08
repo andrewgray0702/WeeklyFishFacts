@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FactService } from 'src/app/services/fact.service';
 
 @Component({
   selector: 'app-suggest',
@@ -6,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./suggest.component.scss']
 })
 export class SuggestComponent implements OnInit {
+  suggestion: string;
+  constructor(private factServ: FactService) { }
 
-  constructor() { }
-
+  suggest(){
+    this.factServ.suggestFact({
+      "fact": this.suggestion
+    })
+  }
   ngOnInit() {
   }
 

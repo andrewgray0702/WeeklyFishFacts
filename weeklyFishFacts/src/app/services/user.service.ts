@@ -7,8 +7,17 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  loginService(data) {
-    this.http.post('http://localhost:3000/api/login',data)
+
+  signupService(loginData) {
+    this.http.post('http://localhost:3000/api/users/signup', loginData).subscribe(res =>
+      console.log(res)
+    )
+  }
+
+  loginService(loginData) {
+    this.http.post('http://localhost:3000/api/users/login', loginData).subscribe(res => 
+      console.log(res)
+    )
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  email: string;
+  password: string;
+  repeatPass: string;
+  constructor(private userServ: UserService) { }
 
-  constructor() { }
+  signup(){
+    this.userServ.signupService({
+      "email": this.email,
+      "password": this.password
+    })
+  }
 
   ngOnInit() {
   }

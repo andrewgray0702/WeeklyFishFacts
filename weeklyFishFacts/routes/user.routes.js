@@ -3,6 +3,7 @@ const router = express.Router();
 let user = require("../models/user.models");
 
 router.post('/login', (req, res)=>{
+    console.log('hit');
     user.login(req, res);
 })
 

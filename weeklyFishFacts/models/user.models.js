@@ -9,7 +9,7 @@ function create(req, res){
         }
         let password = bcrypt.hashSync(req.body.password, 5);
         let email = req.body.email;
-        pool.query("INSERT INTO USER (username, password) VALUES(?,?)", [email, password], (err, result)=>{
+        pool.query("INSERT INTO USER (email, password) VALUES(?,?)", [email, password], (err, result)=>{
             if(!err){
                 return res.send("Signed Up!");
             }
@@ -21,7 +21,8 @@ function create(req, res){
 
 
 function login(req, res){
-    pool.query('SELECT * FROM WHERE email = ?', [req.body.email], (err, result) => {
+    pool.query('SELECT * FROM USER WHERE email = ?', [req.body.email], (err, result) =>{ 
+    console.log(err)
         if(result){
             if(bcrypt.compareSync(req.body.password, result[0].password)){
                 return res.send({message: "Welcome Back!"})

@@ -4,20 +4,20 @@
   <div class="row">
   <div class="form-group col">
     <label for="inputEmail1">Email address</label>
-    <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" autocomplete="email username" name="emailForm" [(ngModel)]="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 </div>
 <div class="row">
   <div class="form-group col">
     <label for="inputPassword1">Password</label>
-    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+    <input type="password" name="passwordForm" [(ngModel)]="password" autocomplete="new-password" class="form-control" id="inputPassword1" placeholder="Password">
   </div>
 </div>
   <div class="row">
   <div class="form-group col">
     <label for="inputPassword2">Repeat Password</label>
-    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    <input type="password" name='passwordFormConfirm' [(ngModel)]="repeatPass" autocomplete="new-password" class="form-control" id="inputPassword2" placeholder="Repeat Password">
   </div>
   </div>
   <div class="row">
@@ -27,7 +27,7 @@
   </div>
   </div>
   <div class="textAlignCenter">
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="signup()">Submit</button>
   </div>
 </form>
 </div>
