@@ -19,31 +19,64 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="inputEmail1">Email address</label>
-                <input type="email" autocomplete="username email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                  else.</small>
+            <form #loginForm="ngForm">
+              <div class="row">
+                <div class="form-group col">
+                  <label for="inputEmail1">Email address</label>
+                  <input type="email" #emailForm="ngModel" required minlength="10" autocomplete="email username" name="emailForm" [(ngModel)]="email"
+                    class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <div *ngIf="emailForm.invalid && (emailForm.dirty || emailForm.touched)" class="alert alert-danger">
+                    <div *ngIf="emailForm.errors.required">
+                      Email is required.
+                    </div>
+                    <div *ngIf="emailForm.errors.minlength">
+                      Email must be at least 10 characters long.
+                    </div>
+                  </div>
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="inputPassword1">Password</label>
-                <input type="password" autocomplete="new-password" class="form-control" id="inputPassword1" placeholder="Password">
+              <div class="row">
+                <div class="form-group col">
+                  <label for="inputPassword1">Password</label>
+                  <input type="password" required #passwordForm="ngModel" minlength="7" name="passwordForm" [(ngModel)]="password"
+                    autocomplete="new-password" class="form-control" id="inputPassword1" placeholder="Password">
+                  <div *ngIf="passwordForm.invalid && (passwordForm.dirty || passwordForm.touched)" class="alert alert-danger">
+                    <div *ngIf="passwordForm.errors.required">
+                      Password is required.
+                    </div>
+                    <div *ngIf="passwordForm.errors.minlength">
+                      Password must be at least 7 characters long.
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="inputPassword2">Repeat Password</label>
-                <input type="password" autocomplete="new-password" class="form-control" id="inputPassword2" placeholder="Repeat Password">
+              <div class="row">
+                <div class="form-group col">
+                  <label for="inputPassword2">Repeat Password</label>
+                  <input type="password" required #repeatPasswordForm="ngModel" minlength="7" name='repeatPass' [(ngModel)]="repeatPass"
+                    autocomplete="new-password" class="form-control" id="inputPassword2" placeholder="Repeat Password">
+                    <div *ngIf="password != repeatPass && (repeatPasswordForm.dirty || repeatPasswordForm.touched)" class="alert alert-danger">
+                      <div *ngIf="password != repeatPass">
+                        Passwords must match
+                      </div>
+                    </div>
+                </div>
               </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="check1">
-                <label class="form-check-label" for="check1">I would like to recieve special offers.</label>
-              </div>
+                <div class="row">
+                  <div class="form-group form-check col">
+                    <input type="checkbox" class="form-check-input" id="check1">
+                    <label class="form-check-label" for="check1">I would like to recieve special offers.</label>
+                  </div>
+                </div>
+                <div *ngIf="error" class="alert alert-danger">
+                  {{ error }}
+                </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="signup()">Sign Up</button>
+            <button type="button" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="signup()">Sign Up</button>
           </div>
         </div>
       </div>

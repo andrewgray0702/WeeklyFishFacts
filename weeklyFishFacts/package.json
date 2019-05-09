@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "front": "ng build --watch",
+    "backend": "nodemon server",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

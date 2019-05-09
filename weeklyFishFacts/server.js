@@ -16,10 +16,15 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
+app.use(express.static(__dirname+"/dist"));
 
 app.use(bodyParser.json());
 app.use('/api/users/', userRoutes);
 app.use('/api/facts/', factRoutes);
+
+app.get('*', (req, res) => {
+      res.sendFile(__dirname + '/dist/index.html');
+  });
 
 
 app.listen(PORT);

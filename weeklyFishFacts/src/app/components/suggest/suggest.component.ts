@@ -12,7 +12,8 @@ export class SuggestComponent implements OnInit {
 
   suggest(){
     this.factServ.suggestFact({
-      "fact": this.suggestion
+      "fact": this.suggestion,
+      "userID": localStorage.getItem('user') 
     })
   }
   ngOnInit() {

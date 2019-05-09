@@ -2,3 +2,11 @@
     background: rgb(18,33,75);
     background: linear-gradient(0deg, rgba(18,33,75,1) 0%, rgba(44,9,226,1) 100%);
 }
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+*{
+    font-family: 'Gugi', cursive;
+    color: white;
+}
+.dropdown-item{
+    color: black !important;
+}

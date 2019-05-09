@@ -5,13 +5,14 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SuggestComponent } from './components/suggest/suggest.component';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'articles', component: ArticlesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'suggest', component: SuggestComponent},
+  {path: 'suggest', component: SuggestComponent, canActivate: [UserGuard]},
   {path: '**', redirectTo: 'home'}
 ];
 

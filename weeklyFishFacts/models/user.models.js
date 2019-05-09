@@ -11,7 +11,8 @@ function create(req, res){
         let email = req.body.email;
         pool.query("INSERT INTO USER (email, password) VALUES(?,?)", [email, password], (err, result)=>{
             if(!err){
-                return res.send("Signed Up!");
+                console.log(result);
+                return res.send({user: {email: req.body.email, id: result.insertId}});
             }
             console.log(err);
             res.status(500).send({error: "SOMETHING BROKE"})
@@ -22,10 +23,10 @@ function create(req, res){
 
 function login(req, res){
     pool.query('SELECT * FROM USER WHERE email = ?', [req.body.email], (err, result) =>{ 
-    console.log(err)
-        if(result){
+    console.log(result, req.body)
+        if(result[0]){
             if(bcrypt.compareSync(req.body.password, result[0].password)){
-                return res.send({message: "Welcome Back!"})
+                return res.send(result)
             } else {
                 return res.send({error: "Invalid Username or Password"});
             }

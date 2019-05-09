@@ -9,15 +9,19 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  error: string;
   constructor(private userServ: UserService) { }
   
   login(){
-    this.userServ.loginService({
-      "email": this.email, "password": this.password
+    this.userServ.login({"email": this.email, "password": this.password}).subscribe(res => {
+      if(res['error']){
+        this.error = res['error'];
+        return
+      }
+      this.userServ.saveUser(res);
     })
   }
 
   ngOnInit() {
   }
-
 }

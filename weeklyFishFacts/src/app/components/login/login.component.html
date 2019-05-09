@@ -1,16 +1,32 @@
 <div class="bg textAlignCenter">
   <div class="formAlign col-lg-6">
-    <form>
+    <form #loginForm="ngForm">
       <div class="row">
         <div class="form-group col">
           <label for="inputEmail1">Email address</label>
-          <input type="email" autocomplete="email username" [(ngModel)]="username" name='emailForm' class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <input type="email" required minlength="10" #emailForm="ngModel" autocomplete="email username" [(ngModel)]="email" name='emailForm' class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <div *ngIf="emailForm.invalid && (emailForm.dirty || emailForm.touched)" class="alert alert-danger">
+            <div *ngIf="emailForm.errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="emailForm.errors.minlength">
+              Email must be at least 10 characters long.
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col">
           <label for="inputPassword1">Password</label>
-          <input type="password" autocomplete='current-password' [(ngModel)]="password" name='passwordForm' class="form-control" id="inputPassword1" placeholder="Password">
+          <input type="password" required minlength="7" #passwordForm="ngModel" autocomplete='current-password' [(ngModel)]="password" name='passwordForm' class="form-control" id="inputPassword1" placeholder="Password">
+          <div *ngIf="passwordForm.invalid && (passwordForm.dirty || passwordForm.touched)" class="alert alert-danger">
+            <div *ngIf="passwordForm.errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="passwordForm.errors.minlength">
+              Password must be at least 7 characters long.
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -20,8 +36,11 @@
         </div>
       </div>
       <div class="textAlignCenter">
-        <button type="submit" class="btn btn-primary" (click)="login()">Log-In</button>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="login()">Log-In</button>
       </div>
     </form>
+    <div class='alert alert-danger marginTop' *ngIf="error">
+      {{ error }}
+    </div>
   </div>
 </div>

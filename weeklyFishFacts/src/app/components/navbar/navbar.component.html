@@ -22,14 +22,17 @@
           </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink='/suggest' routerLinkActive="active">Suggest</a>
+            <a class="nav-link" routerLink='/suggest' routerLinkActive="active" *ngIf="isLoggedIn">Suggest</a>
           </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink='/login' routerLinkActive="active">Log In</a>
+        <a class="nav-link" routerLink='/login' routerLinkActive="active" *ngIf="!isLoggedIn">Log In</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink='/signup' routerLinkActive="active">Sign Up</a>
+        <a class="nav-link" routerLink='/signup' routerLinkActive="active"  *ngIf="!isLoggedIn">Sign Up</a>
       </li>
     </ul>
+    <a (click)="logout()" *ngIf="isLoggedIn" class="nav-link">
+      Log Out
+    </a>
   </div>
 </nav>
