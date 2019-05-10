@@ -8,8 +8,6 @@ const factRoutes = require('./routes/facts.routes');
 
 
 
-app.use(allowCrossDomain);
-
 app.use(express.static(__dirname+"/dist"));
 
 app.use(bodyParser.json());
