@@ -9,7 +9,7 @@ export class FactService {
   constructor(private http: HttpClient) { }
   
   suggestFact(fact){
-    this.http.post('http://localhost:3000/api/facts/suggest', fact).subscribe(res =>
+    this.http.post('/api/facts/suggest', fact).subscribe(res =>
       console.log(res)
       );
   }

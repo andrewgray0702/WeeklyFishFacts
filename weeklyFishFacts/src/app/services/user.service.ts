@@ -12,11 +12,11 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
 
   signup(loginData) {
-    return this.http.post('http://localhost:3000/api/users/signup', loginData)
+    return this.http.post('/api/users/signup', loginData)
   }
 
   login(loginData) {
-    return this.http.post('http://localhost:3000/api/users/login', loginData)
+    return this.http.post('/api/users/login', loginData)
   }
   saveUser(user){
     this.isLoggedIn.next(true);
