@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 function create(req, res){
     pool.query("SELECT * FROM USER WHERE email = ?", 
     [req.body.email], (err, queryReturn)=>{
+        console.log(err);
         if(queryReturn[0]){
             return res.send("USERNAME ALREADY EXISTS")
         }

@@ -8,6 +8,7 @@ import { FactService } from 'src/app/services/fact.service';
 })
 export class SuggestComponent implements OnInit {
   suggestion: string;
+  suggested: boolean = false;
   constructor(private factServ: FactService) { }
 
   suggest(){
@@ -15,6 +16,8 @@ export class SuggestComponent implements OnInit {
       "fact": this.suggestion,
       "userID": localStorage.getItem('user') 
     })
+    this.suggested = true;
+    console.log(this.suggested)
   }
   ngOnInit() {
   }

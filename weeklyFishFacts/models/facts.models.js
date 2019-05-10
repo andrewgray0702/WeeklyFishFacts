@@ -1,7 +1,7 @@
 const pool = require('../connections').pool;
 
 function suggest(req, res){
-    pool.query('INSERT INTO FACTS (fact, userID) VALUES (?, ?)', [req.body.fact, req.body.userID], (err, result)=>{
+    pool.query('INSERT INTO facts (fact, userID) VALUES (?, ?)', [req.body.fact, req.body.userID], (err, result)=>{
         console.log(err);
         
         if(!err){
