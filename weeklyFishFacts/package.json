@@ -7,7 +7,7 @@
     "front": "ng build --watch",
     "postinstall": "ng build --prod",
     "backend": "nodemon server",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
