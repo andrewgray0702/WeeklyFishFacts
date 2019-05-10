@@ -8,9 +8,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
+  isSignedUp: boolean;
   constructor(private userServ: UserService) {
      this.userServ.isLoggedIn.subscribe(val => {
        this.isLoggedIn = val;
+     })
+     this.userServ.isSignedUp.subscribe(val => {
+       this.isSignedUp = val;
+       console.log(this.isSignedUp);
      })
    }
   

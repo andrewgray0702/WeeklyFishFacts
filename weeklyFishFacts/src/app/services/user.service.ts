@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserService {
   isLoggedIn = new BehaviorSubject<boolean>(false);
+  isSignedUp = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient, private router: Router) { }
 
   signup(loginData) {
@@ -24,13 +25,14 @@ export class UserService {
     this.router.navigate(['/suggest']);
   }
   newUser(){
-    this.isLoggedIn.next(true);
-    console.log(this.isLoggedIn);
-    this.router.navigate(['/suggest']);
+    this.isSignedUp.next(true);
+    console.log(this.isSignedUp);
+    this.router.navigate(['/login']);
   }
 
   logout(){
     this.isLoggedIn.next(false);
+    this.isSignedUp.next(false);
     localStorage.removeItem('user');
     this.router.navigate(['/login'])
   }
